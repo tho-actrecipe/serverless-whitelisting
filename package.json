@@ -1,0 +1,26 @@
+{
+  "name": "serverless-whitelisting",
+  "version": "0.0.1",
+  "author": "Asterist",
+  "description": "Creates a whitelist for IP addresses, CIDR for a serverless application, using serverless resource policies",
+  "test": "echo 'Ordinarily, tests should be here' && exit 0",
+  "keywords": [
+    "serverless",
+    "resource-policy",
+    "resourcepolicy",
+    "ip",
+    "cidr",
+    "whitelist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tho-asterist/serverless-whitelisting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tho-asterist/serverless-whitelisting/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "semver": "^7.3.4"
+  }
+}
