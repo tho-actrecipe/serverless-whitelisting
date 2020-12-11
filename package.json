@@ -1,6 +1,6 @@
 {
   "name": "serverless-whitelisting",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "author": "Asterist",
   "description": "Create a whitelist for IP addresses, CIDR for a serverless application, using serverless resource policies",
   "test": "echo \"Error: no test specified\" && exit 1",

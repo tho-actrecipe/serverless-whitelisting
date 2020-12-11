@@ -31,7 +31,7 @@ class ServerlessPlugin {
             serverless,
             options,
             hooks,
-            resourcePolicy: null,
+            resourcePolicy: [],
             provider: serverless.getProvider("aws")
         });
     }
@@ -46,7 +46,7 @@ class ServerlessPlugin {
                 this.serverless.cli.log(
                     `Public Resource policy required for ${stage} stage`
                 );
-                this.resourcePolicy = Object.assign(PUBLIC_RESOURCE, BASE_POLICY);
+                this.resourcePolicy.push(Object.assign(PUBLIC_RESOURCE, BASE_POLICY));
             }
 
             // If the currently selected stage is a private stage
@@ -68,8 +68,9 @@ class ServerlessPlugin {
                     `Private Resource policy required for ${stage} stage`
                 );
 
-                this.resourcePolicy = Object.assign(
+                this.resourcePolicy.push(Object.assign(
                     {
+                        Resource: ["execute-api:/*/*/*"],
                         Condition: {
                             IpAddress: {
                                 "aws:SourceIp": netblocks
@@ -77,7 +78,7 @@ class ServerlessPlugin {
                         }
                     },
                     BASE_POLICY
-                );
+                ));
             }
 
             // If set publicPaths
@@ -86,13 +87,13 @@ class ServerlessPlugin {
                     const policy = {
                         Resource: ["execute-api:/*/*/" + publicPaths[i]]
                     }
-                    this.resourcePolicy = Object.assign(policy, BASE_POLICY);
+                    this.resourcePolicy.push(Object.assign(policy, BASE_POLICY));
                 }
             }
 
             // Assign resource policy update
             const resourcePolicyUpdate = {
-                resourcePolicy: [this.resourcePolicy]
+                resourcePolicy: this.resourcePolicy
             };
 
             if (!inDevMode) {
