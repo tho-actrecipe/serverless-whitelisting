@@ -1,7 +1,5 @@
 "use strict";
 
-const semver = require("semver");
-
 const PLUGIN_NAME = "serverless-whitelisting";
 
 const BASE_POLICY = {
@@ -18,12 +16,8 @@ class ServerlessPlugin {
     constructor(serverless, options) {
         console.log(`Starting serverless-whitelisting`);
 
-        if (!semver.satisfies(serverless.version, ">= 1.12")) {
-            throw new Error(
-                "Requires serverless 1.12 or higher!"
-            );
-        }
         let config = {};
+
         if (serverless.service.custom && serverless.service.custom[PLUGIN_NAME]) {
             config = serverless.service.custom[PLUGIN_NAME];
         }

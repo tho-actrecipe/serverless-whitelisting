@@ -1,6 +1,8 @@
 # Serverless Whitelisting
 
-Creates a whitelist for IP addresses, CIDR for a serverless application, using serverless resource policies.
+Create a whitelist for IP addresses, CIDR for a serverless application, using serverless resource policies.
+
+This plugin requires serverless 1.12 or higher.
 
 ## Private and Public Stages
 
@@ -26,7 +28,7 @@ IP addresses, CIDR are whitelisted by stages and `publicPaths`.
 4. Within a `custom` block, add:
    ```
    custom:
-     serverless-resource-policy:
+     serverless-whitelisting:
        stage: ${self:provider.stage}
        privateStages:
          - staging
@@ -57,7 +59,7 @@ provider:
   stage: ${opt:stage, 'test'}
 
 custom:
-  serverless-resource-policy:
+  serverless-whitelisting:
     stage: ${self:provider.stage}
     privateStages:
       - staging
