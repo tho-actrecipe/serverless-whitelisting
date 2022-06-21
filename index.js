@@ -97,7 +97,7 @@ class ServerlessPlugin {
             };
 
             if (!inDevMode) {
-                Object.assign(this.serverless.service.provider, resourcePolicyUpdate);
+                Object.assign(this.serverless.service.provider.apiGateway, resourcePolicyUpdate);
             } else {
                 this.serverless.cli.log(JSON.stringify(resourcePolicyUpdate));
             }
