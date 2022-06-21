@@ -2,7 +2,7 @@
 
 Create a whitelist for IP addresses, CIDR for a serverless application, using serverless resource policies.
 
-This plugin requires serverless 1.12 or higher.
+This plugin requires serverless 3.18 or higher.
 
 ## Private and Public Stages
 
